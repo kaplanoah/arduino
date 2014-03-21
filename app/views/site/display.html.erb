@@ -1,17 +1,55 @@
-<canvas id="canvas" width="300" height="300"></canvas>
-
-<div id="box" style="border: 1px solid blue; padding: 20px"></div>
+<canvas id="canvas" width="900" height="500"></canvas>
 
 <script>
 
   $(document).on('ready', function(){
+    var width = $(window).width();
+    var height = $(window).height();
+
+    var canvas = document.getElementById('canvas');
+    canvas.width = width;
+    canvas.height = height;
+
+    var c = canvas.getContext("2d");
+     
+    c.fillStyle = 'Green';
+    c.fillRect(0, 0, canvas.width, canvas.height);
+
+    c.fillStyle = 'red';
+    c.fillRect(20, 20, 50, 50);
+
+    c.strokeStyle = 'white';
+    c.lineWidth = 3;
+    c.strokeRect(20, 20, 50, 50);
+
+    c.strokeStyle = 'blue';
+    c.lineWidth = 3;
+    c.beginPath();
+    c.moveTo(100, 100);
+    c.lineTo(200, 200);
+    c.stroke();
+
+    var x_pos = 100;
+    setInterval(function(){
+
+      c.fillStyle = 'green';
+      // c.fillRect(0, 0, canvas.width, canvas.height);
+
+      if ( x_pos < 500 ) {
+        x_pos ++;
+        c.fillStyle = 'yellow';
+        c.beginPath();
+        c.arc(x_pos, 340, 50, 0, Math.PI * 2, true);
+        c.fill();
+      }
+
+    }, 1);
 
     $.ajax({
       type: 'GET',
       url: '/input.json',
       success: function(data){
         console.log(data.message);
-        $('#box').append(data.message);
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) { 
         console.log("Status: " + textStatus);
