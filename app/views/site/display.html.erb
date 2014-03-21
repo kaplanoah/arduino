@@ -33,6 +33,32 @@
         async: true,
         success: function(data){
           console.log(data.light);
+
+          var light = data.light
+          switch(true)
+          {
+          case (light >= 900):
+            c.fillStyle = 'C4BAFF';
+            break;
+          case (light < 900 && light >= 800):
+            c.fillStyle = 'A291FF';
+            break;
+          case (light < 800 && light >= 700):
+            c.fillStyle = '765EFF';
+            break;
+          case (light < 700 && light >= 600):
+            c.fillStyle = '4529E3';
+            break;
+          case (light < 600 && light >= 500):
+            c.fillStyle = '3016C4';
+            break;
+          default:
+            c.fillStyle = 'red';
+          }
+
+          c.beginPath();
+          c.arc(width/2, height/2, 90, 0, Math.PI * 2, true);
+          c.fill();
           setTimeout(ajaxCall(), 500);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
