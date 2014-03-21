@@ -17,13 +17,28 @@
 
     c.fillStyle = 'black';
     c.font="bold 30px Arial";
+
+    var circleHeight = height / 2;
+    var textHeight = height / 2 - 140;
+    var lightWidth = width / 2 - 200;
+    var temperatureWidth = width / 2 + 200;
+
     var text = "Light";
     var textWidth = c.measureText(text).width;
-    c.fillText("Light", width/2 - textWidth/2 , height/2 - 140);
+    c.fillText("Light", lightWidth - textWidth/2, textHeight);
+
+    text = "Temperature";
+    textWidth = c.measureText(text).width;
+    c.fillText("Temperature", temperatureWidth - textWidth/2, textHeight);
     
     c.fillStyle = '18009E';
     c.beginPath();
-    c.arc(width/2, height/2, 90, 0, Math.PI * 2, true);
+    c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
+    c.fill();
+
+    c.fillStyle = '18009E';
+    c.beginPath();
+    c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
     c.fill();
 
     function ajaxCall() {
@@ -34,6 +49,8 @@
         success: function(data){
           console.log("Light: " + data.light);
           console.log("Temperature: " + data.temperature);
+
+          // update light
 
           var light = data.light
           switch(true)
@@ -58,9 +75,42 @@
           }
 
           c.beginPath();
-          c.arc(width/2, height/2, 90, 0, Math.PI * 2, true);
+          c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
           c.fill();
+
+          // update temperature
+
+          var temp = data.temperature
+          switch(true)
+          {
+          case (temp >= 142):
+            c.fillStyle = 'C4BAFF';
+            break;
+          case (light < 141 && light >= 140):
+            c.fillStyle = 'A291FF';
+            break;
+          case (light < 140 && light >= 139):
+            c.fillStyle = '765EFF';
+            break;
+          case (light < 139 && light >= 138):
+            c.fillStyle = '4529E3';
+            break;
+          case (light < 138 && light >= 137):
+            c.fillStyle = '3016C4';
+            break;
+          default:
+            c.fillStyle = 'red';
+          }
+
+          c.beginPath();
+          c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
+          c.fill();
+
+
+          // next AJAX call
+
           setTimeout(ajaxCall(), 500);
+          
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
           console.log("Status: " + textStatus);
