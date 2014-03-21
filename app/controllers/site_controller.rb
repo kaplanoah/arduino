@@ -3,10 +3,11 @@ class SiteController < ApplicationController
   def display
     arduino = ArduinoFirmata.connect ARGV.shift
     @light = arduino.analog_read 0
+    @temperature = arduino.analog_read 1
 
     respond_to do |f|
       f.html { render }
-      f.json { render :json => { :light => @light } }
+      f.json { render :json => { :light => @light, :temperature => @temperature } }
     end
   end
 

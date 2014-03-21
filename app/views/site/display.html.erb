@@ -32,7 +32,8 @@
         url: '/input.json',
         async: true,
         success: function(data){
-          console.log(data.light);
+          console.log("Light: " + data.light);
+          console.log("Temperature: " + data.temperature);
 
           var light = data.light
           switch(true)
