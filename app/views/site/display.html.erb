@@ -1,0 +1,22 @@
+<div id="box" style="border: 1px solid blue; padding: 20px"></div>
+
+<script>
+
+  $(document).on('ready', function(){
+
+    $.ajax({
+      type: 'GET',
+      url: '/input.json',
+      success: function(data){
+        console.log(data.message);
+        $('#box').append(data.message);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) { 
+        console.log("Status: " + textStatus);
+        console.log("Error: " + errorThrown); 
+      }
+    })
+
+  });
+
+</script>
