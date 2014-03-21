@@ -28,4 +28,5 @@ In web browser, visit:
 __NOTE:__ The app relies on input from the Arduino sensors.
 
 This project has not been deployed on the internet yet.
+
 Expected deployment: Wednesday, 26 March 2014.
