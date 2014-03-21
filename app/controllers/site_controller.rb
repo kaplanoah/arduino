@@ -1,7 +1,8 @@
 class SiteController < ApplicationController
   
   def display
-    @message = "Hello world"
+    arduino = ArduinoFirmata.connect ARGV.shift
+    @message = arduino.analog_read 0
 
     respond_to do |f|
       f.html { render }
