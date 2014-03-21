@@ -11,39 +11,17 @@
     canvas.height = height;
 
     var c = canvas.getContext("2d");
-     
-    c.fillStyle = 'Green';
-    c.fillRect(0, 0, canvas.width, canvas.height);
 
-    c.fillStyle = 'red';
-    c.fillRect(20, 20, 50, 50);
-
-    c.strokeStyle = 'white';
-    c.lineWidth = 3;
-    c.strokeRect(20, 20, 50, 50);
-
-    c.strokeStyle = 'blue';
-    c.lineWidth = 3;
+    c.fillStyle = 'black';
+    c.font="bold 30px Arial";
+    var text = "Light";
+    var textWidth = c.measureText(text).width;
+    c.fillText("Light", width/2 - textWidth/2 , height/2 - 140);
+    
+    c.fillStyle = '18009E';
     c.beginPath();
-    c.moveTo(100, 100);
-    c.lineTo(200, 200);
-    c.stroke();
-
-    var x_pos = 100;
-    setInterval(function(){
-
-      c.fillStyle = 'green';
-      // c.fillRect(0, 0, canvas.width, canvas.height);
-
-      if ( x_pos < 500 ) {
-        x_pos ++;
-        c.fillStyle = 'yellow';
-        c.beginPath();
-        c.arc(x_pos, 340, 50, 0, Math.PI * 2, true);
-        c.fill();
-      }
-
-    }, 1);
+    c.arc(width/2, height/2, 90, 0, Math.PI * 2, true);
+    c.fill();
 
     $.ajax({
       type: 'GET',
