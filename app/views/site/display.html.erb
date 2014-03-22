@@ -41,7 +41,7 @@
     c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
     c.fill();
 
-    function ajaxCall() {
+    setInterval(function ajaxCall() {
       $.ajax({
         type: 'GET',
         url: '/input.json',
@@ -71,7 +71,7 @@
             c.fillStyle = '3016C4';
             break;
           default:
-            c.fillStyle = 'red';
+            c.fillStyle = 'black';
           }
 
           c.beginPath();
@@ -99,7 +99,7 @@
             c.fillStyle = '3016C4';
             break;
           default:
-            c.fillStyle = 'red';
+            c.fillStyle = 'black';
           }
 
           c.beginPath();
@@ -109,7 +109,7 @@
 
           // next AJAX call
 
-          setTimeout(ajaxCall(), 500);
+          // setTimeout(ajaxCall(), 1000);
           
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -117,9 +117,9 @@
           console.log("Error: " + errorThrown); 
         }
       })
-    }
+    }, 100);
 
-    ajaxCall();
+    //(ajaxCall(), 1000);
 
   });
 
