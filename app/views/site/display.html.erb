@@ -18,6 +18,16 @@
     c.fillStyle = 'black';
     c.font="bold 30px Arial";
 
+    // c.fillStyle = '0076A8';
+    // c.beginPath();
+    // c.moveTo(0, height);
+    // c.lineTo(0, height - 50);
+    // c.quadraticCurveTo(400, 560, 700, 620);
+    // c.quadraticCurveTo(1000, 700, 1300, 550);
+    // c.lineTo(width, height);
+    // c.stroke();
+    // c.fill();
+
     var circleHeight = height / 2;
     var textHeight = height / 2 - 140;
     var lightWidth = width / 2 - 350;
@@ -99,19 +109,19 @@
     function updateTemperature(temp) {
       switch(true)
       {
-      case (temp >= 149):
+      case (temp >= 147):
         c.fillStyle = 'C4BAFF';
         break;
-      case (temp < 149 && temp >= 148):
+      case (temp < 147 && temp >= 145):
         c.fillStyle = 'A291FF';
         break;
-      case (temp < 148 && temp >= 147):
+      case (temp < 145 && temp >= 143):
         c.fillStyle = '765EFF';
         break;
-      case (temp < 147 && temp >= 146):
+      case (temp < 143 && temp >= 141):
         c.fillStyle = '4529E3';
         break;
-      case (temp < 146 && temp >= 145):
+      case (temp < 141 && temp >= 139):
         c.fillStyle = '3016C4';
         break;
       default:
