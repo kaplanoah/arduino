@@ -1,11 +1,9 @@
 class SiteController < ApplicationController
   
-  $arduino = ArduinoFirmata.connect ARGV.shift
-
   def display
-    @light = $arduino.analog_read 0
-    @temperature = $arduino.analog_read 1
-    @sound = $arduino.analog_read 2
+    @light = ARDUINO.analog_read 0
+    @temperature = ARDUINO.analog_read 1
+    @sound = ARDUINO.analog_read 2
     
     respond_to do |f|
       f.html { render }
@@ -17,16 +15,6 @@ class SiteController < ApplicationController
         }
       }
     end
-  end
-
-  def upload
-    # initialize constants
-    $arduino.pin_mode 13, ArduinoFirmata::OUTPUT
-    
-    # setup
-    $arduino.digital_write 13, true
-
-    redirect_to :root
   end
 
 end
