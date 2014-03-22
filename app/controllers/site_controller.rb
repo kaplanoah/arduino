@@ -5,10 +5,17 @@ class SiteController < ApplicationController
   def display
     @light = $arduino.analog_read 0
     @temperature = $arduino.analog_read 1
+    @sound = $arduino.analog_read 2
     
     respond_to do |f|
       f.html { render }
-      f.json { render :json => { :light => @light, :temperature => @temperature } }
+      f.json { render :json =>
+        {
+          :light => @light,
+          :temperature => @temperature,
+          :sound => @sound
+        }
+      }
     end
   end
 

@@ -20,8 +20,9 @@
 
     var circleHeight = height / 2;
     var textHeight = height / 2 - 140;
-    var lightWidth = width / 2 - 200;
-    var temperatureWidth = width / 2 + 200;
+    var lightWidth = width / 2 - 350;
+    var temperatureWidth = width / 2;
+    var soundWidth = width / 2 + 350;
 
     var text = "Light";
     var textWidth = c.measureText(text).width;
@@ -31,14 +32,21 @@
     textWidth = c.measureText(text).width;
     c.fillText("Temperature", temperatureWidth - textWidth/2, textHeight);
     
+    text = "Sound";
+    textWidth = c.measureText(text).width;
+    c.fillText("Sound", soundWidth - textWidth/2, textHeight);
+
     c.fillStyle = '18009E';
     c.beginPath();
     c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
     c.fill();
 
-    c.fillStyle = '18009E';
     c.beginPath();
     c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
+    c.fill();
+
+    c.beginPath();
+    c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
     c.fill();
 
     setInterval(function ajaxCall() {
@@ -49,6 +57,7 @@
         success: function(data){
           console.log("Light: " + data.light);
           console.log("Temperature: " + data.temperature);
+          console.log("Sound: " + data.sound);
           updateLight(data.light);
           updateTemperature(data.temperature);
         },
@@ -89,7 +98,7 @@
     function updateTemperature(temp) {
       switch(true)
       {
-      case (temp >= 142):
+      case (temp >= 141):
         c.fillStyle = 'C4BAFF';
         break;
       case (temp < 141 && temp >= 140):
