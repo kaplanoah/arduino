@@ -49,68 +49,8 @@
         success: function(data){
           console.log("Light: " + data.light);
           console.log("Temperature: " + data.temperature);
-
-          // update light
-
-          var light = data.light
-          switch(true)
-          {
-          case (light >= 900):
-            c.fillStyle = 'C4BAFF';
-            break;
-          case (light < 900 && light >= 800):
-            c.fillStyle = 'A291FF';
-            break;
-          case (light < 800 && light >= 700):
-            c.fillStyle = '765EFF';
-            break;
-          case (light < 700 && light >= 600):
-            c.fillStyle = '4529E3';
-            break;
-          case (light < 600 && light >= 500):
-            c.fillStyle = '3016C4';
-            break;
-          default:
-            c.fillStyle = 'black';
-          }
-
-          c.beginPath();
-          c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
-          c.fill();
-
-          // update temperature
-
-          var temp = data.temperature
-          switch(true)
-          {
-          case (temp >= 142):
-            c.fillStyle = 'C4BAFF';
-            break;
-          case (light < 141 && light >= 140):
-            c.fillStyle = 'A291FF';
-            break;
-          case (light < 140 && light >= 139):
-            c.fillStyle = '765EFF';
-            break;
-          case (light < 139 && light >= 138):
-            c.fillStyle = '4529E3';
-            break;
-          case (light < 138 && light >= 137):
-            c.fillStyle = '3016C4';
-            break;
-          default:
-            c.fillStyle = 'black';
-          }
-
-          c.beginPath();
-          c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
-          c.fill();
-
-
-          // next AJAX call
-
-          // setTimeout(ajaxCall(), 1000);
-          
+          updateLight(data.light);
+          updateTemperature(data.temperature);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
           console.log("Status: " + textStatus);
@@ -119,7 +59,59 @@
       })
     }, 100);
 
-    //(ajaxCall(), 1000);
+    function updateLight(light) {
+      switch(true)
+      {
+      case (light >= 900):
+        c.fillStyle = 'C4BAFF';
+        break;
+      case (light < 900 && light >= 800):
+        c.fillStyle = 'A291FF';
+        break;
+      case (light < 800 && light >= 700):
+        c.fillStyle = '765EFF';
+        break;
+      case (light < 700 && light >= 600):
+        c.fillStyle = '4529E3';
+        break;
+      case (light < 600 && light >= 500):
+        c.fillStyle = '3016C4';
+        break;
+      default:
+        c.fillStyle = 'black';
+      }
+
+      c.beginPath();
+      c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
+      c.fill();
+    };
+
+    function updateTemperature(temp) {
+      switch(true)
+      {
+      case (temp >= 142):
+        c.fillStyle = 'C4BAFF';
+        break;
+      case (temp < 141 && temp >= 140):
+        c.fillStyle = 'A291FF';
+        break;
+      case (temp < 140 && temp >= 139):
+        c.fillStyle = '765EFF';
+        break;
+      case (temp < 139 && temp >= 138):
+        c.fillStyle = '4529E3';
+        break;
+      case (temp < 138 && temp >= 137):
+        c.fillStyle = '3016C4';
+        break;
+      default:
+        c.fillStyle = 'black';
+      }
+
+      c.beginPath();
+      c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
+      c.fill();
+    };
 
   });
 
