@@ -99,19 +99,19 @@
     function updateTemperature(temp) {
       switch(true)
       {
-      case (temp >= 141):
+      case (temp >= 149):
         c.fillStyle = 'C4BAFF';
         break;
-      case (temp < 141 && temp >= 140):
+      case (temp < 149 && temp >= 148):
         c.fillStyle = 'A291FF';
         break;
-      case (temp < 140 && temp >= 139):
+      case (temp < 148 && temp >= 147):
         c.fillStyle = '765EFF';
         break;
-      case (temp < 139 && temp >= 138):
+      case (temp < 147 && temp >= 146):
         c.fillStyle = '4529E3';
         break;
-      case (temp < 138 && temp >= 137):
+      case (temp < 146 && temp >= 145):
         c.fillStyle = '3016C4';
         break;
       default:
@@ -130,7 +130,7 @@
         c.fillStyle = '3016C4';
         break;
       default:
-        c.fillStyle = 'A291FF';
+        c.fillStyle = 'C4BAFF';
       }
 
       c.beginPath();
