@@ -60,6 +60,7 @@
           console.log("Sound: " + data.sound);
           updateLight(data.light);
           updateTemperature(data.temperature);
+          updateSound(data.sound);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
           console.log("Status: " + textStatus);
@@ -119,6 +120,21 @@
 
       c.beginPath();
       c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
+      c.fill();
+    };
+
+      function updateSound(sound) {
+      switch(true)
+      {
+      case (sound >= 34):
+        c.fillStyle = '3016C4';
+        break;
+      default:
+        c.fillStyle = 'A291FF';
+      }
+
+      c.beginPath();
+      c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
       c.fill();
     };
 
