@@ -144,10 +144,14 @@
       c.fillStyle = 'white';
       c.fillRect(soundWidth - 90, circleHeight - 90, 180, 180);
 
+      if ( volume < 400 ) {
+        volume = 800 - volume;
+      }
+
       updateBuffer(volumeHistory, volume);
-      var red = map(volume, 500, 800, 0, 48);
-      var green = map(volume, 500, 800, 0, 133);
-      var blue = map(volume, 500, 800, 0, 227);
+      var red = map(volume, 400, 1200, 0, 48);
+      var green = map(volume, 400, 1200, 0, 133);
+      var blue = map(volume, 400, 1200, 0, 227);
       c.fillStyle = 'rgb(' + red + ',' + green + ',' + blue +')';
       c.beginPath();
       c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
@@ -156,7 +160,7 @@
       c.fillStyle = 'red';
       var widthOffset = 0;
       _.each(getBufferHistory(volumeHistory), function(value){
-        var newValue = map(value, 500, 800, 0, 90);
+        var newValue = map(value, 400, 1200, 0, 90);
         c.fillRect(soundWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
         widthOffset = widthOffset + 6;
       })
