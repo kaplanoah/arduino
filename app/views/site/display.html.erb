@@ -139,7 +139,7 @@
     function getBufferHistory(buffer) { // variable
       var history = [];
       for ( var i = 0; i < buffer.length; i++ ) {
-        history.push(buffer[buffer.pointer]);
+        if ( buffer[buffer.pointer] ) history.push(buffer[buffer.pointer]);
         if ( buffer.pointer < buffer.length - 1 ) {
           buffer.pointer ++;
         } else {
