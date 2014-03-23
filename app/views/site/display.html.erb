@@ -60,7 +60,7 @@
       $.ajax({
         type: 'GET',
         url: '/input.json',
-        async: true,
+        async: true, // take out
         success: function(data){
           console.log("Light: " + data.light);
           console.log("Temperature: " + data.temperature);
@@ -137,11 +137,11 @@
       function updateSound(sound) {
       switch(true)
       {
-      case (sound >= 34):
-        c.fillStyle = '3016C4';
+      case (sound === 1):
+        c.fillStyle = 'red';
         break;
       default:
-        c.fillStyle = 'C4BAFF';
+        c.fillStyle = 'grey';
       }
 
       c.beginPath();

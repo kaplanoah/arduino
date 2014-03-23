@@ -3,7 +3,8 @@ class SiteController < ApplicationController
   def display
     @light = ARDUINO.analog_read 0
     @temperature = ARDUINO.analog_read 1
-    @sound = ARDUINO.analog_read 2
+    @sound = ARDUINO.digital_read 2
+    @volume = ARDUINO.analog_read 2
     
     respond_to do |f|
       f.html { render }
@@ -11,7 +12,8 @@ class SiteController < ApplicationController
         {
           :light => @light,
           :temperature => @temperature,
-          :sound => @sound
+          :sound => @sound,
+          :volume => @volume
         }
       }
     end
