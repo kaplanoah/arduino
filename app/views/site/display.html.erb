@@ -52,14 +52,14 @@
 
     // set AJAX calls for sensor inputs
 
-    var j = 50;
+    var counter = 5000;
     var ajaxCall = function() {
-      j --;
-      if ( j === 0 ) {
-        clearInterval(ajaxCallInterval);
-      } else {
-        console.log("J: " + j);
-      }
+      // counter --;
+      // if ( counter === 0 ) {
+      //   clearInterval(ajaxCallInterval);
+      // } else {
+      //   console.log("Counter: " + counter);
+      // }
       $.ajax({
         type: 'GET',
         url: '/input.json',
@@ -68,9 +68,10 @@
           console.log("Light: " + data.light);
           console.log("Temperature: " + data.temperature);
           console.log("Sound: " + data.sound);
+          console.log("Volume: " + data.volume);
           updateLight(data.light);
           updateTemperature(data.temperature);
-          updateSound(data.sound);
+          updateVolume(data.volume);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
           console.log("Status: " + textStatus);
@@ -86,6 +87,7 @@
 
     createCircularBuffer("lightHistory", 30);
     createCircularBuffer("tempHistory", 30);
+    createCircularBuffer("volumeHistory", 30);
     createCircularBuffer("soundHistory", 30);
 
 
@@ -93,8 +95,10 @@
 
     function updateLight(light) {
       updateBuffer(lightHistory, light);
-      var blue = map(light, 400, 1000, 40, 100);
-      c.fillStyle = 'rgb(0, 0, ' + blue +')';
+      var red = map(light, 400, 1000, 0, 48);
+      var green = map(light, 400, 1000, 8, 133);
+      var blue = map(light, 400, 1000, 97, 227);
+      c.fillStyle = 'rgb(' + red + ',' + green + ',' + blue +')';
       c.beginPath();
       c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
       c.fill();
@@ -102,28 +106,41 @@
 
     function updateTemperature(temp) {
       updateBuffer(tempHistory, temp);
-      var blue = map(temp, 140, 155, 40, 100);
-      c.fillStyle = 'rgb(0, 0, ' + blue +')';
+      var red = map(temp, 120, 190, 0, 48);
+      var green = map(temp, 120, 190, 0, 133);
+      var blue = map(temp, 120, 190, 0, 227);
+      c.fillStyle = 'rgb(' + red + ',' + green + ',' + blue +')';
       c.beginPath();
       c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
       c.fill();
     };
 
-    function updateSound(sound) {
-      updateBuffer(soundHistory, sound);
-      switch(true)
-      {
-      case (sound === 1):
-        c.fillStyle = 'red';
-        break;
-      default:
-        c.fillStyle = 'grey';
-      }
-
+    function updateVolume(volume) {
+      updateBuffer(volumeHistory, volume);
+      var red = map(volume, 500, 800, 0, 48);
+      var green = map(volume, 500, 800, 0, 133);
+      var blue = map(volume, 500, 800, 0, 227);
+      c.fillStyle = 'rgb(' + red + ',' + green + ',' + blue +')';
       c.beginPath();
       c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
       c.fill();
     };
+
+    // function updateSound(sound) {
+    //   updateBuffer(soundHistory, sound);
+    //   switch(true)
+    //   {
+    //   case (sound === 1):
+    //     c.fillStyle = 'red';
+    //     break;
+    //   default:
+    //     c.fillStyle = 'grey';
+    //   }
+
+    //   c.beginPath();
+    //   c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
+    //   c.fill();
+    // };
 
 
     // other function implementations
