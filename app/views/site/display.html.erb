@@ -129,12 +129,9 @@
 
     function updateSound(sound) {
       updateBuffer(soundHistory, sound);
-      switch(true)
-      {
-      case (sound === true):
+      if (sound === true) {
         c.strokeStyle = 'red';
-        break;
-      default:
+      } else {
         c.strokeStyle = 'lightgrey';
       }
 
