@@ -77,58 +77,16 @@
     }, 100);
 
     function updateLight(light) {
-      // take a range in 400 in 1000
-      // convert it to 4561 to 1336
-
-
-      switch(true)
-      {
-      case (light >= 900): // 1336
-        c.fillStyle = 4561;
-        break;
-      case (light < 900 && light >= 800):
-        c.fillStyle = 4561;
-        break;
-      case (light < 800 && light >= 700):
-        c.fillStyle = 1336;
-        break;
-      case (light < 700 && light >= 600):
-        c.fillStyle = 1336;
-        break;
-      case (light < 600 && light >= 500): 
-        c.fillStyle = 1336; // 4561
-        break;
-      default:
-        c.fillStyle = 1336;
-      }
-
+      var blue = map(light, 400, 1000, 40, 100);
+      c.fillStyle = 'rgb(0, 0, ' + blue +')';
       c.beginPath();
       c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
       c.fill();
     };
 
     function updateTemperature(temp) {
-      switch(true)
-      {
-      case (temp >= 147):
-        c.fillStyle = 'C4BAFF';
-        break;
-      case (temp < 147 && temp >= 145):
-        c.fillStyle = 'A291FF';
-        break;
-      case (temp < 145 && temp >= 143):
-        c.fillStyle = '765EFF';
-        break;
-      case (temp < 143 && temp >= 141):
-        c.fillStyle = '4529E3';
-        break;
-      case (temp < 141 && temp >= 139):
-        c.fillStyle = '3016C4';
-        break;
-      default:
-        c.fillStyle = 'black';
-      }
-
+      var blue = map(light, 140, 155, 40, 100);
+      c.fillStyle = 'rgb(0, 0, ' + blue +')';
       c.beginPath();
       c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
       c.fill();
