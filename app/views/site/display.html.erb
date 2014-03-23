@@ -52,7 +52,14 @@
 
     // set AJAX calls for sensor inputs
 
-    setInterval(function ajaxCall() {
+    var j = 50;
+    var ajaxCall = function() {
+      j --;
+      if ( j === 0 ) {
+        clearInterval(ajaxCallInterval);
+      } else {
+        console.log("J: " + j);
+      }
       $.ajax({
         type: 'GET',
         url: '/input.json',
@@ -70,7 +77,9 @@
           console.log("Error: " + errorThrown); 
         }
       })
-    }, 100);
+    };
+
+    var ajaxCallInterval = setInterval(ajaxCall, 100);
 
 
     // initialize input history circular buffers
@@ -93,7 +102,7 @@
 
     function updateTemperature(temp) {
       updateBuffer(tempHistory, temp);
-      var blue = map(light, 140, 155, 40, 100);
+      var blue = map(temp, 140, 155, 40, 100);
       c.fillStyle = 'rgb(0, 0, ' + blue +')';
       c.beginPath();
       c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
@@ -101,8 +110,7 @@
     };
 
     function updateSound(sound) {
-      updateSound(soundHistory, sound);
-      updateBuffer(lightHistory, light);
+      updateBuffer(soundHistory, sound);
       switch(true)
       {
       case (sound === 1):
