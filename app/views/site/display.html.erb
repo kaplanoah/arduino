@@ -71,8 +71,8 @@
           console.log("Volume: " + data.volume);
           updateLight(data.light);
           updateTemperature(data.temperature);
-          updateVolume(data.volume);
           updateSound(data.sound);
+          updateVolume(data.volume);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
           console.log("Status: " + textStatus);
@@ -141,9 +141,6 @@
     };
 
     function updateVolume(volume) {
-      c.fillStyle = 'white';
-      c.fillRect(soundWidth - 90, circleHeight - 90, 180, 180);
-
       if ( volume < 400 ) {
         volume = 800 - volume;
       }
@@ -167,6 +164,9 @@
     };
 
     function updateSound(sound) {
+      c.fillStyle = 'white';
+      c.fillRect(soundWidth - 90, circleHeight - 90, 180, 180);
+
       updateBuffer(soundHistory, sound);
       if (sound === true) {
         c.strokeStyle = 'red';
@@ -174,7 +174,7 @@
         c.strokeStyle = 'lightgrey';
       }
 
-      c.lineWidth = 5;
+      c.lineWidth = 9;
       c.beginPath();
       c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
       c.stroke();
