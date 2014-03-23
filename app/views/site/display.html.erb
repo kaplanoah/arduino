@@ -83,6 +83,7 @@
     // canvas update functions
 
     function updateLight(light) {
+      updateBuffer(lightHistory, light);
       var blue = map(light, 400, 1000, 40, 100);
       c.fillStyle = 'rgb(0, 0, ' + blue +')';
       c.beginPath();
@@ -91,6 +92,7 @@
     };
 
     function updateTemperature(temp) {
+      updateBuffer(tempHistory, temp);
       var blue = map(light, 140, 155, 40, 100);
       c.fillStyle = 'rgb(0, 0, ' + blue +')';
       c.beginPath();
@@ -99,6 +101,8 @@
     };
 
     function updateSound(sound) {
+      updateSound(soundHistory, sound);
+      updateBuffer(lightHistory, light);
       switch(true)
       {
       case (sound === 1):
