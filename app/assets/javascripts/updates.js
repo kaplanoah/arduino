@@ -25,9 +25,9 @@ var leafBlue;
 function updateLight(light) {
   updateBuffer(lightHistory, light);
 
-  skyRed = map(light, 200, 1000, 27, 175);
-  skyGreen = map(light, 200, 1000, 29, 212);
-  skyBlue = map(light, 200, 1000, 59, 237);
+  skyRed = map(light, 200, 1000, 0, 172);
+  skyGreen = map(light, 200, 1000, 8, 218);
+  skyBlue = map(light, 200, 1000, 64, 255);
   skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
 
   mountain1Red = map(light, 200, 1000, 0, 48);
@@ -55,7 +55,7 @@ function updateLight(light) {
   leafBlue = map(light, 200, 1000, 0, 48);
   leafColor = 'pink';
 
-  drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor);
+  drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3);
 
   // light input and history visualization
   c.fillStyle = skyColor;
