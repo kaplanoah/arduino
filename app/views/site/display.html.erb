@@ -15,44 +15,16 @@
 
     var c = canvas.getContext("2d");
 
-    var circleHeight = height / 2;
-    var textHeight = height / 2 - 140;
+    var circleHeight = height / 6;
     var lightWidth = width / 2 - 350;
     var temperatureWidth = width / 2;
     var soundWidth = width / 2 + 350;
 
-    c.fillStyle = 'black';
-    c.font="bold 30px Arial";
-
-    var text = "Light";
-    var textWidth = c.measureText(text).width;
-    c.fillText("Light", lightWidth - textWidth/2, textHeight);
-
-    text = "Temperature";
-    textWidth = c.measureText(text).width;
-    c.fillText("Temperature", temperatureWidth - textWidth/2, textHeight);
-    
-    text = "Sound";
-    textWidth = c.measureText(text).width;
-    c.fillText("Sound", soundWidth - textWidth/2, textHeight);
-
-    c.fillStyle = '0010C2';
-    c.beginPath();
-    c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
-    c.fill();
-
-    c.beginPath();
-    c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
-    c.fill();
-
-    c.beginPath();
-    c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
-    c.fill();
-
 
     // draw sky and mountains
 
-    c.fillStyle = 'rgb(162, 198, 245)';
+    var skyColor = 'rgb(162, 198, 245)';
+    c.fillStyle = skyColor;
     c.fillRect(0, 0, width, height);
 
     // mountainrange code adapted from http://cs.lmu.edu/~ray/notes/canvas/
@@ -162,7 +134,7 @@
       var green = map(light, 200, 1000, 8, 133);
       var blue = map(light, 200, 1000, 97, 227);
 
-      c.fillStyle = 'white';
+      c.fillStyle = skyColor;
       c.fillRect(lightWidth - 90, circleHeight - 90, 180, 180);
 
       c.fillStyle = 'rgb(' + red + ',' + green + ',' + blue +')';
@@ -182,7 +154,7 @@
     function updateTemperature(temp) {
       updateBuffer(tempHistory, temp);
 
-      c.fillStyle = 'white';
+      c.fillStyle = skyColor;
       c.fillRect(temperatureWidth - 90, circleHeight - 90, 180, 180);
 
       var red = map(temp, 120, 190, 0, 48);
@@ -226,7 +198,7 @@
     };
 
     function updateSound(sound) {
-      c.fillStyle = 'white';
+      c.fillStyle = skyColor;
       c.fillRect(soundWidth - 90, circleHeight - 90, 180, 180);
 
       updateBuffer(soundHistory, sound);
