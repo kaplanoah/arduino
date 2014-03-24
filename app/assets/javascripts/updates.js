@@ -1,17 +1,3 @@
-var circleHeight;
-var lightWidth;
-var temperatureWidth;
-var soundWidth;
-var c;
-
-function setTemporaryVariables(width, height, canvas) {
-  circleHeight = height / 6;
-  lightWidth = width / 2 - 350;
-  temperatureWidth = width / 2;
-  soundWidth = width / 2 + 350;
-  c = canvas;
-}
-
 function updateLight(light) {
   updateBuffer(lightHistory, light);
   var red = map(light, 200, 1000, 0, 48);

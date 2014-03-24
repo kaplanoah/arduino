@@ -2,7 +2,7 @@
 
 var skyColor = 'rgb(162, 198, 245)';
 
-function drawSkyAndMountains(c, width, height) {
+function drawSkyAndMountains() {
 
   c.fillStyle = skyColor;
   c.fillRect(0, 0, width, height);

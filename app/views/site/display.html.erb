@@ -3,20 +3,28 @@
 <script>
 
   $(document).on('ready', function(){
-    var width = $(window).width();
-    var height = $(window).height();
+
+    window.width = $(window).width();
+    window.height = $(window).height();
 
     // initialize canvas
     var canvas = document.getElementById('canvas');
     canvas.width = width;
     canvas.height = height;
-    var c = canvas.getContext("2d");
+    window.c = canvas.getContext("2d");
 
-    setTemporaryVariables(width, height, c);
 
-    drawSkyAndMountains(c, width, height);
 
-    drawTree(c, width, height);
+    window.circleHeight = height / 6;
+    window.lightWidth = width / 2 - 350;
+    window.temperatureWidth = width / 2;
+    window.soundWidth = width / 2 + 350;
+
+
+
+    drawSkyAndMountains(width, height);
+
+    drawTree(width, height);
     
     initializeCircularBuffers(30);
 

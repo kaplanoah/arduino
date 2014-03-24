@@ -1,7 +1,7 @@
 // adapted from developer Sameer Borate's Algorithmic Tree 1.0.0 (GPL)
 // http://codediesel.com
 
-function drawTree(c, width, height) {
+function drawTree() {
 
   var tree = {
 
