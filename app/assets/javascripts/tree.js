@@ -1,8 +1,11 @@
 // adapted from developer Sameer Borate's Algorithmic Tree 1.0.0 (GPL)
 // http://codediesel.com
 
-function drawTree() {
+function drawTreeSkyAndMountains() {
 
+  drawSkyAndMountains();
+
+  c.strokeStyle = 'rgb(66, 41, 36)';
   var tree = {
 
     branchWidth:   17,

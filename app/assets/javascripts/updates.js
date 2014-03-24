@@ -83,3 +83,7 @@ function updateSound(sound) {
   c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
   c.stroke();
 };
+
+function updateTree() {
+  drawTreeSkyAndMountains();
+}
