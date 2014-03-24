@@ -61,10 +61,17 @@
     var y;
     var ruggedness;
     var smoothing;
+    var range = 0.9;
 
-    // Returns a random number between -x/2 and x/2
     scale = function (x) {
-        return -( x / 2.0 ) + x * Math.random();
+      if ( range === 0.9 ) {
+        range = 0.4;
+      } else if ( range === 0.5 ) {
+        range = 0.9;
+      } else {
+        range = 0.5;
+      }
+      return -( x / 2.0 ) + x * range; //Math.random();
     };
 
     // Draws a fractal line by recursive decomposition, using the global ruggedness
@@ -97,8 +104,8 @@
 
     var mountainColors = ['lightgrey', 'darkgrey', 'grey'];
     var ruggedValues = [0.2, 0.4, 0.6];
-    var edgeHeights = [height / 2.8, height / 2.4, height / 2.0];
-    var smoothings = [1, 0.6, 0.3];
+    var edgeHeights = [height / 2.6, height / 2.1, height / 1.6];
+    var smoothings = [1.3, 0.7, 0.4];
 
     for (var i = 0; i < 3; i++) {
       drawMountain(ruggedValues[i], mountainColors[i], edgeHeights[i], smoothings[i]);
