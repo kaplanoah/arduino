@@ -1,26 +1,9 @@
-var skyRed;
-var skyGreen;
-var skyBlue;
-
-var mountain1Red;
-var mountain1Green;
-var mountain1Blue;
-
-var mountain2Red;
-var mountain2Green;
-var mountain2Blue;
-
-var mountain3Red;
-var mountain3Green;
-var mountain3Blue;
-
-var trunkRed;
-var trunkGreen;
-var trunkBlue;
-
-var leafRed;
-var leafGreen;
-var leafBlue;
+      var skyRed;       var skyGreen;       var skyBlue;
+var mountain1Red; var mountain1Green; var mountain1Blue;
+var mountain2Red; var mountain2Green; var mountain2Blue;
+var mountain3Red; var mountain3Green; var mountain3Blue;
+    var trunkRed;     var trunkGreen;     var trunkBlue;
+     var leafRed;      var leafGreen;      var leafBlue;
 
 function updateLight(light) {
   updateBuffer(lightHistory, light);
@@ -30,20 +13,20 @@ function updateLight(light) {
   skyBlue = map(light, 200, 1000, 64, 255);
   skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
 
-  mountain1Red = map(light, 200, 1000, 0, 48);
-  mountain1Green = map(light, 200, 1000, 0, 48);
-  mountain1Blue = map(light, 200, 1000, 0, 48);
-  mountainColor1 = 'pink';
+  mountain1Red = map(light, 200, 1000, 81, 221);
+  mountain1Green = map(light, 200, 1000, 55, 209);
+  mountain1Blue = map(light, 200, 1000, 94, 227);
+  mountainColor1 = 'rgb(' + mountain1Red + ',' + mountain1Green + ',' + mountain1Blue + ')';
 
-  mountain2Red = map(light, 200, 1000, 0, 48);
-  mountain2Green = map(light, 200, 1000, 0, 48);
-  mountain2Blue = map(light, 200, 1000, 0, 48);
-  mountainColor2 = 'pink';
+  mountain2Red = map(light, 200, 1000, 71, 201);
+  mountain2Green = map(light, 200, 1000, 38, 190);
+  mountain2Blue = map(light, 200, 1000, 87, 207);
+  mountainColor2 = 'rgb(' + mountain2Red + ',' + mountain2Green + ',' + mountain2Blue + ')';
 
-  mountain3Red = map(light, 200, 1000, 0, 48);
-  mountain3Green = map(light, 200, 1000, 0, 48);
-  mountain3Blue = map(light, 200, 1000, 0, 48);
-  mountainColor3 = 'pink';
+  mountain3Red = map(light, 200, 1000, 45, 192);
+  mountain3Green = map(light, 200, 1000, 8, 173);
+  mountain3Blue = map(light, 200, 1000, 64, 201);
+  mountainColor3 = 'rgb(' + mountain3Red + ',' + mountain3Green + ',' + mountain3Blue + ')';
 
   trunkRed = map(light, 200, 1000, 0, 48);
   trunkGreen = map(light, 200, 1000, 0, 48);
