@@ -10,7 +10,7 @@ function startAjaxCallsForSensorInputs(){
         console.log("Sound: " + data.sound);
         console.log("Volume: " + data.volume);
         if ( data.sound === true ) {
-          updateTree();
+          // draw new tree in slightly different position
         }
         updateLight(data.light);
         updateTemperature(data.temperature);
@@ -22,6 +22,6 @@ function startAjaxCallsForSensorInputs(){
         console.log("Error: " + errorThrown); 
       }
     })
-  }, 100);
+  }, 300);
 
 }

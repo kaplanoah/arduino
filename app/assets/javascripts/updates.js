@@ -38,7 +38,7 @@ function updateLight(light) {
   leafBlue = map(light, 200, 1000, 0, 48);
   leafColor = 'pink';
 
-  drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3);
+  drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, 'pink', 'pink', false);
 
   // light input and history visualization
   c.fillStyle = skyColor;

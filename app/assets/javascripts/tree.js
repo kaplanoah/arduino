@@ -1,7 +1,12 @@
 // adapted from developer Sameer Borate's Algorithmic Tree 1.0.0 (GPL)
 // http://codediesel.com
 
-function drawTreeSkyAndMountains(trunkColor, leafColor) {
+var i;
+var j = 0;
+var randomInts = [];
+var randomInt;
+
+function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree) {
 
   drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3);
 
@@ -30,8 +35,20 @@ function drawTreeSkyAndMountains(trunkColor, leafColor) {
         c.stroke();
         c.translate(0,-height/10);
 
-        // random integer from -0.1 to 0.1
-        var randomInt = -(Math.random() * 0.1) + 0.1;
+        if ( updateTree === true ) {
+          randomInts = [];
+          for (i = 0; i < 300; i ++) {
+            randomInts.push(-(Math.random() * 0.1) + 0.1)
+          }
+        }
+
+        if ( randomInts[j] === randomInts[299] ) {
+          j = 0;
+        } else {
+          j++;
+        }
+
+        randomInt = randomInts[j];
 
         c.rotate(randomInt);
 
