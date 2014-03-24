@@ -1,3 +1,5 @@
+var updateTree;
+
 function startAjaxCallsForSensorInputs(){
 
   setInterval(function ajaxCall() {
@@ -10,9 +12,11 @@ function startAjaxCallsForSensorInputs(){
         console.log("Sound: " + data.sound);
         console.log("Volume: " + data.volume);
         if ( data.sound === true ) {
-          // draw new tree in slightly different position
+          updateTree = true;
+        } else {
+          updateTree = false;
         }
-        updateLight(data.light);
+        updateLight(data.light, updateTree);
         updateTemperature(data.temperature);
         updateSound(data.sound);
         updateVolume(data.volume);

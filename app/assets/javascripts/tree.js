@@ -2,7 +2,7 @@
 // http://codediesel.com
 
 var i;
-var j = 0;
+var j;
 var randomInts = [];
 var randomInt;
 
@@ -41,6 +41,8 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
             randomInts.push(-(Math.random() * 0.1) + 0.1)
           }
         }
+
+        j = 0;
 
         if ( randomInts[j] === randomInts[299] ) {
           j = 0;
