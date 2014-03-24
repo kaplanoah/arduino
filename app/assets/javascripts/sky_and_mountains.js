@@ -1,8 +1,6 @@
 // adapted from http://cs.lmu.edu/~ray/notes/canvas/
 
-var skyColor = 'rgb(162, 198, 245)';
-
-function drawSkyAndMountains() {
+function drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3) {
 
   c.fillStyle = skyColor;
   c.fillRect(0, 0, width, height);
@@ -49,10 +47,10 @@ function drawSkyAndMountains() {
       c.closePath();
       c.fillStyle = mountainColor;
       c.fill();
-      c.fillStyle = "rgb(0, 0, 0)";
+      // c.fillStyle = "rgb(0, 0, 0)";
   };
 
-  var mountainColors = ['lightgrey', 'darkgrey', 'grey'];
+  var mountainColors = [mountainColor1, mountainColor2, mountainColor3];
   var ruggedValues = [0.2, 0.4, 0.6];
   var edgeHeights = [height / 2.6, height / 2.1, height / 1.6];
   var smoothings = [1.3, 0.7, 0.4];

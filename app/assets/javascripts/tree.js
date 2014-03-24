@@ -1,9 +1,9 @@
 // adapted from developer Sameer Borate's Algorithmic Tree 1.0.0 (GPL)
 // http://codediesel.com
 
-function drawTreeSkyAndMountains() {
+function drawTreeSkyAndMountains(trunkColor, leafColor) {
 
-  drawSkyAndMountains();
+  drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3);
 
   c.strokeStyle = 'rgb(66, 41, 36)';
   var tree = {

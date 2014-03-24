@@ -13,18 +13,16 @@
     canvas.height = height;
     window.c = canvas.getContext("2d");
 
-
-
+    // temporary variables for input visualization
     window.circleHeight = height / 6;
     window.lightWidth = width / 2 - 350;
     window.temperatureWidth = width / 2;
     window.soundWidth = width / 2 + 350;
 
-    drawTreeSkyAndMountains();
-    
+    // run core functions
     initializeCircularBuffers(30);
-
     startAjaxCallsForSensorInputs();    
+    drawTreeSkyAndMountains('rgb(162, 198, 245)');
 
   });
 
