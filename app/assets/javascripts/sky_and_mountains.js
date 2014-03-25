@@ -1,9 +1,17 @@
 // adapted from http://cs.lmu.edu/~ray/notes/canvas/
 
-function drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3) {
+function drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, drawLightning) {
 
   c.fillStyle = skyColor;
   c.fillRect(0, 0, width, height);
+
+  if ( drawLightning ) {
+    c.save();
+    flashLightning();
+    flashLightning();
+    flashLightning();
+    c.restore();
+  }
 
   var x;
   var y;

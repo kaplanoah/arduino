@@ -6,9 +6,9 @@ var j;
 var randomInts = [];
 var randomInt;
 
-function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree) {
+function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning) {
 
-  drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3);
+  drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, drawLightning);
 
   c.strokeStyle = trunkColor;
   var tree = {
@@ -24,7 +24,10 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
       c.lineWidth = this.branchWidth;
       this.leavesColor = leafColor;
       c.lineJoin = 'round';
+      c.lineCap = 'round';
+      c.save();
       this.branch(0);
+      c.restore();
     },
 
     branch : function(depth) {

@@ -7,6 +7,7 @@ var mountain3Red; var mountain3Green; var mountain3Blue;
 
 var previousLight;
 var difference;
+var drawLightning;
 
 function updateLight(light, updateTree) {
 
@@ -19,10 +20,10 @@ function updateLight(light, updateTree) {
   skyGreen = map(light, 200, 1000, 8, 218);
   skyBlue = map(light, 200, 1000, 64, 255);
   skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
-  if ( difference > 150 ) {
-    c.save();
-    // flashLightning();
-    c.restore();
+  if ( difference > 50 ) {
+    drawLightning = true;
+  } else {
+    drawLightning = false;
   }
 
   mountain1Red = map(light, 200, 1000, 81, 221);
@@ -50,7 +51,7 @@ function updateLight(light, updateTree) {
   leafBlue = map(light, 200, 1000, 13, 64);
   leafColor = 'rgb(' + leafRed + ',' + leafGreen + ',' + leafBlue + ')';
 
-  drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree);
+  drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning);
 
   // light input and history visualization
   c.fillStyle = skyColor;
@@ -78,66 +79,66 @@ function updateTemperature(temp) {
   updateBuffer(tempHistory, temp);
 
   // temperature input and history visualization
-  c.fillStyle = skyColor;
-  c.fillRect(temperatureWidth - 90, circleHeight - 90, 180, 180);
+  // c.fillStyle = skyColor;
+  // c.fillRect(temperatureWidth - 90, circleHeight - 90, 180, 180);
 
-  var circleRed = map(temp, 120, 190, 0, 48);
-  var circleGreen = map(temp, 120, 190, 0, 133);
-  var circleBlue = map(temp, 120, 190, 0, 227);
-  c.fillStyle = 'rgb(' + circleRed + ',' + circleGreen + ',' + circleBlue +')';
-  c.beginPath();
-  c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
-  c.fill();
+  // var circleRed = map(temp, 120, 190, 0, 48);
+  // var circleGreen = map(temp, 120, 190, 0, 133);
+  // var circleBlue = map(temp, 120, 190, 0, 227);
+  // c.fillStyle = 'rgb(' + circleRed + ',' + circleGreen + ',' + circleBlue +')';
+  // c.beginPath();
+  // c.arc(temperatureWidth, circleHeight, 90, 0, Math.PI * 2, true);
+  // c.fill();
 
-  c.fillStyle = 'CC0000';
-  var widthOffset = 0;
-  _.each(getBufferHistory(tempHistory), function(value){
-    var newValue = map(value, 120, 190, 0, 90);
-    c.fillRect(temperatureWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
-    widthOffset = widthOffset + 6;
-  })
+  // c.fillStyle = 'CC0000';
+  // var widthOffset = 0;
+  // _.each(getBufferHistory(tempHistory), function(value){
+  //   var newValue = map(value, 120, 190, 0, 90);
+  //   c.fillRect(temperatureWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
+  //   widthOffset = widthOffset + 6;
+  // })
 };
 
 function updateVolume(volume) {
 
   // volume input and history visualization
-  if ( volume < 400 ) {
-    volume = 800 - volume;
-  }
+  // if ( volume < 400 ) {
+  //   volume = 800 - volume;
+  // }
 
-  updateBuffer(volumeHistory, volume);
-  var circleRed = map(volume, 400, 1200, 0, 48);
-  var circleGreen = map(volume, 400, 1200, 0, 133);
-  var circleBlue = map(volume, 400, 1200, 0, 227);
-  c.fillStyle = 'rgb(' + circleRed + ',' + circleGreen + ',' + circleBlue +')';
-  c.beginPath();
-  c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
-  c.fill();
+  // updateBuffer(volumeHistory, volume);
+  // var circleRed = map(volume, 400, 1200, 0, 48);
+  // var circleGreen = map(volume, 400, 1200, 0, 133);
+  // var circleBlue = map(volume, 400, 1200, 0, 227);
+  // c.fillStyle = 'rgb(' + circleRed + ',' + circleGreen + ',' + circleBlue +')';
+  // c.beginPath();
+  // c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
+  // c.fill();
 
-  c.fillStyle = 'CC0000';
-  var widthOffset = 0;
-  _.each(getBufferHistory(volumeHistory), function(value){
-    var newValue = map(value, 400, 1200, 0, 90);
-    c.fillRect(soundWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
-    widthOffset = widthOffset + 6;
-  })
+  // c.fillStyle = 'CC0000';
+  // var widthOffset = 0;
+  // _.each(getBufferHistory(volumeHistory), function(value){
+  //   var newValue = map(value, 400, 1200, 0, 90);
+  //   c.fillRect(soundWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
+  //   widthOffset = widthOffset + 6;
+  // })
 };
 
 function updateSound(sound) {
  
   // sound input and history visualization
-  c.fillStyle = skyColor;
-  c.fillRect(soundWidth - 90, circleHeight - 90, 180, 180);
+  // c.fillStyle = skyColor;
+  // c.fillRect(soundWidth - 90, circleHeight - 90, 180, 180);
 
-  updateBuffer(soundHistory, sound);
-  if (sound === true) {
-    c.strokeStyle = 'CC0000';
-  } else {
-    c.strokeStyle = 'white';
-  }
+  // updateBuffer(soundHistory, sound);
+  // if (sound === true) {
+  //   c.strokeStyle = 'CC0000';
+  // } else {
+  //   c.strokeStyle = 'white';
+  // }
 
-  c.lineWidth = 9;
-  c.beginPath();
-  c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
-  c.stroke();
+  // c.lineWidth = 9;
+  // c.beginPath();
+  // c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
+  // c.stroke();
 };
