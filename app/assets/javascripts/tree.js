@@ -10,7 +10,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
 
   drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3);
 
-  c.strokeStyle = 'rgb(66, 41, 36)';
+  c.strokeStyle = trunkColor;
   var tree = {
 
     branchWidth:   30,
@@ -22,7 +22,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
     draw : function() {
       c.translate(width / 2 - 300, height); // tree position
       c.lineWidth = this.branchWidth;
-      this.leavesColor = 'green';
+      this.leavesColor = leafColor;
       c.lineJoin = 'round';
       this.branch(0);
     },
