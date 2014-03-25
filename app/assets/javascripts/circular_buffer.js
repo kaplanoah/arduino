@@ -30,10 +30,8 @@ function getBufferHistory(buffer) {
 
 function getBufferPastValue(buffer, index) { // 0 is last added value
   if ( buffer.pointer - index - 1 >= 0 ) {
-    console.log("If: " + buffer[buffer.pointer - index - 1]);
     return buffer[buffer.pointer - index - 1];
   } else {
-    console.log("Else: " + buffer[buffer.length - 1 - index + buffer.pointer]);
     return buffer[buffer.length - 1 - index + buffer.pointer];
   }
 }

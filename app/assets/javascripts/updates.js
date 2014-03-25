@@ -5,26 +5,26 @@ var mountain3Red; var mountain3Green; var mountain3Blue;
     var trunkRed;     var trunkGreen;     var trunkBlue;
      var leafRed;      var leafGreen;      var leafBlue;
 
-var previousLight;
 var difference;
 var drawLightning;
 
 function updateLight(light, updateTree) {
 
-  difference = light - previousLight;
-  previousLight = light;
-
   updateBuffer(lightHistory, light);
+
+  if ( getBufferPastValue(lightHistory, 1) ) difference = light - getBufferPastValue(lightHistory, 1);
+
+  if ( difference > 150 ) {
+    console.log("FLASH!");
+    drawLightning = true;
+  } else {
+    drawLightning = false;
+  }
 
   skyRed = map(light, 200, 1000, 0, 172);
   skyGreen = map(light, 200, 1000, 8, 218);
   skyBlue = map(light, 200, 1000, 64, 255);
   skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
-  if ( difference > 50 ) {
-    drawLightning = true;
-  } else {
-    drawLightning = false;
-  }
 
   mountain1Red = map(light, 200, 1000, 81, 221);
   mountain1Green = map(light, 200, 1000, 55, 209);
