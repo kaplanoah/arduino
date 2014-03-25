@@ -44,9 +44,18 @@ function drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainC
       }
   };
 
-  drawMountain = function (ruggedValue, mountainColor, edgeHeight, smoothValue) {
+  drawMountain = function (ruggedValue, mountainColor, edgeHeight, smoothValue, drawLightning) {
       ruggedness = ruggedValue;
       smoothing = smoothValue;
+
+      if ( drawLightning && smoothValue != 0.4 ) {
+        c.shadowBlur = 15;
+        c.shadowColor = 'rgb(255, 255, 200)';
+      } else {
+        c.shadowBlur = 5;
+        c.shadowColor = mountainColor;
+      }
+
       c.beginPath();
       c.moveTo(0, height);
       c.lineTo(x = 0, y = edgeHeight);
@@ -64,7 +73,9 @@ function drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainC
   var smoothings = [1.3, 0.7, 0.4];
 
   for (var i = 0; i < 3; i++) {
-    drawMountain(ruggedValues[i], mountainColors[i], edgeHeights[i], smoothings[i]);
+    c.save();
+    drawMountain(ruggedValues[i], mountainColors[i], edgeHeights[i], smoothings[i], drawLightning);
+    c.restore();
   };
 
 }

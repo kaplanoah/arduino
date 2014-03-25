@@ -58,7 +58,6 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         }
 
         randomNum = randomNums[j];
-        console.log(randomNum);
         c.rotate(randomNum);
 
         switch(this.randomness)
