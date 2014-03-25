@@ -9,7 +9,7 @@ for (i = 0; i < 100; i ++) {
 }
 var randomNum;
 
-function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway) {
+function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway, drawLeaves) {
 
   drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, drawLightning);
 
@@ -93,10 +93,12 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         }
       } else {
         // draw leaves
-        randomLeafColor = Math.floor((Math.random()*15)+1)
-        c.fillStyle = this.leavesColor = 'rgb(' + ( leafColor[0] - randomLeafColor ) + ',' + ( leafColor[1] - randomLeafColor ) + ',' + ( leafColor[2] - randomLeafColor ) + ')';
-        c.fillRect(0, 0, this.leafSize, this.leafLength);
-        c.stroke();
+        if ( drawLeaves ) {
+          randomLeafColor = Math.floor((Math.random()*15)+1)
+          c.fillStyle = this.leavesColor = 'rgb(' + ( leafColor[0] - randomLeafColor ) + ',' + ( leafColor[1] - randomLeafColor ) + ',' + ( leafColor[2] - randomLeafColor ) + ')';
+          c.fillRect(0, 0, this.leafSize, this.leafLength);
+          c.stroke();
+        }
       }
     }
   };

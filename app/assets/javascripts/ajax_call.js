@@ -1,6 +1,7 @@
 var treeRandomUpdate = Math.random();
 var updateTree;
 var sway;
+var drawLeaves = true;
 
 function startAjaxCallsForSensorInputs(){
 
@@ -14,6 +15,8 @@ function startAjaxCallsForSensorInputs(){
         console.log("Temperature: " + data.temperature);
         console.log("Sound: " + data.sound);
         console.log("Volume: " + data.volume);
+
+        // sway tree based on sound and randomly
         if ( data.sound === true ) {
           updateTree = true;
           sway = 0.07;
@@ -23,10 +26,18 @@ function startAjaxCallsForSensorInputs(){
         } else {
           updateTree = false;
         }
-        updateLight(data.light, updateTree, sway);
-        updateTemperature(data.temperature);
-        updateSound(data.sound);
-        updateVolume(data.volume);
+
+        // do not draw leaves at low temperature
+        if ( data.temperature < 133 ) {
+          drawLeaves = false;
+        } else {
+          drawLeaves = true;
+        }
+
+        updateLight(data.light, updateTree, sway, drawLeaves);
+        // updateTemperature(data.temperature);
+        // updateSound(data.sound);
+        // updateVolume(data.volume);
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) { 
         console.log("Status: " + textStatus);
