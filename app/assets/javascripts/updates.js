@@ -19,7 +19,11 @@ function updateLight(light, updateTree) {
   skyGreen = map(light, 200, 1000, 8, 218);
   skyBlue = map(light, 200, 1000, 64, 255);
   skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
-  if ( difference > 150 ) skyColor = 'white';
+  if ( difference > 150 ) {
+    c.save();
+    // flashLightning();
+    c.restore();
+  }
 
   mountain1Red = map(light, 200, 1000, 81, 221);
   mountain1Green = map(light, 200, 1000, 55, 209);
@@ -36,14 +40,14 @@ function updateLight(light, updateTree) {
   mountain3Blue = map(light, 200, 1000, 64, 201);
   mountainColor3 = 'rgb(' + mountain3Red + ',' + mountain3Green + ',' + mountain3Blue + ')';
 
-  trunkRed = map(light, 200, 1000, 0, 48);
-  trunkGreen = map(light, 200, 1000, 0, 48);
-  trunkBlue = map(light, 200, 1000, 0, 48);
+  trunkRed = map(light, 200, 1000, 54, 171);
+  trunkGreen = map(light, 200, 1000, 29, 122);
+  trunkBlue = map(light, 200, 1000, 16, 96);
   trunkColor = 'pink';
 
-  leafRed = map(light, 200, 1000, 0, 48);
-  leafGreen = map(light, 200, 1000, 0, 48);
-  leafBlue = map(light, 200, 1000, 0, 48);
+  leafRed = map(light, 200, 1000, 12, 106);
+  leafGreen = map(light, 200, 1000, 59, 222);
+  leafBlue = map(light, 200, 1000, 13, 108);
   leafColor = 'pink';
 
   drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, 'pink', 'pink', updateTree);

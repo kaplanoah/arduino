@@ -1,4 +1,4 @@
-// adapted from developer Sameer Borate's Algorithmic Tree 1.0.0 (GPL)
+// adapted from Sameer Borate's Algorithmic Tree 1.0.0 (GPL)
 // http://codediesel.com
 
 var i;
@@ -13,9 +13,9 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
   c.strokeStyle = 'rgb(66, 41, 36)';
   var tree = {
 
-    branchWidth:   17,
-    leafSpread:    0.4,
-    leafSize:      500,
+    branchWidth:   30,
+    leafSpread:    0.5,
+    leafSize:      550,
     leafLength:    200,
     randomness:    0.9,
 
@@ -31,18 +31,18 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
       if (depth < 12) {
         c.beginPath();
         c.moveTo(0,0);
-        c.lineTo(0,-(height)/10);
+        c.lineTo(0,-(height)/7);
         c.stroke();
-        c.translate(0,-height/10);
+        c.translate(0,-height/7);
 
         if ( updateTree === true ) {
           randomInts = [];
           for (i = 0; i < 300; i ++) {
             randomInts.push(-(Math.random() * 0.1) + 0.1)
           }
+        } else {
+          j = 0;
         }
-
-        j = 0;
 
         if ( randomInts[j] === randomInts[299] ) {
           j = 0;
