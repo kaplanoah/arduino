@@ -26,6 +26,6 @@ function startAjaxCallsForSensorInputs(){
         console.log("Error: " + errorThrown); 
       }
     })
-  }, 1000);
+  }, 100);
 
 }

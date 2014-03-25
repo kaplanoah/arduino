@@ -7,6 +7,9 @@ var mountain3Red; var mountain3Green; var mountain3Blue;
 
 var difference;
 var drawLightning;
+var flashedLightning = false;
+var lightBeforeFlash;
+var counter = 0;
 
 function updateLight(light, updateTree) {
 
@@ -14,17 +17,30 @@ function updateLight(light, updateTree) {
 
   if ( getBufferPastValue(lightHistory, 1) ) difference = light - getBufferPastValue(lightHistory, 1);
 
+  console.log("DIFFERENCE: " + difference);
+
   if ( difference > 150 ) {
-    console.log("FLASH!");
     drawLightning = true;
+    flashedLightning = true;
+    counter = 5;
+    lightBeforeFlash = getBufferPastValue(lightHistory, 1);
   } else {
     drawLightning = false;
   }
 
-  skyRed = map(light, 200, 1000, 0, 172);
-  skyGreen = map(light, 200, 1000, 8, 218);
-  skyBlue = map(light, 200, 1000, 64, 255);
-  skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
+  if ( !flashedLightning ) {
+    skyRed = map(light, 200, 1000, 0, 172);
+    skyGreen = map(light, 200, 1000, 8, 218);
+    skyBlue = map(light, 200, 1000, 64, 255);
+    skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
+  } else {
+    skyRed = map(lightBeforeFlash, 200, 1000, 0, 172);
+    skyGreen = map(lightBeforeFlash, 200, 1000, 8, 218);
+    skyBlue = map(lightBeforeFlash, 200, 1000, 64, 255);
+    skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
+    counter --;
+    if ( counter === 0 ) flashedLightning = false;
+  }
 
   mountain1Red = map(light, 200, 1000, 81, 221);
   mountain1Green = map(light, 200, 1000, 55, 209);
