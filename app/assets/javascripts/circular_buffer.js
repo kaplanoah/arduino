@@ -15,7 +15,7 @@ function updateBuffer(buffer, value){ // variable, number
   }
 }
 
-function getBufferHistory(buffer) { // variable
+function getBufferHistory(buffer) {
   var history = [];
   for ( var i = 0; i < buffer.length; i++ ) {
     if ( buffer[buffer.pointer] ) history.push(buffer[buffer.pointer]);
@@ -26,6 +26,16 @@ function getBufferHistory(buffer) { // variable
     }
   }
   return history;
+}
+
+function getBufferPastValue(buffer, index) { // 0 is last added value
+  if ( buffer.pointer - index - 1 >= 0 ) {
+    console.log("If: " + buffer[buffer.pointer - index - 1]);
+    return buffer[buffer.pointer - index - 1];
+  } else {
+    console.log("Else: " + buffer[buffer.length - 1 - index + buffer.pointer]);
+    return buffer[buffer.length - 1 - index + buffer.pointer];
+  }
 }
 
 function initializeCircularBuffers(length) {
