@@ -1,8 +1,10 @@
+var treeRandomUpdate = Math.random();
 var updateTree;
 
 function startAjaxCallsForSensorInputs(){
 
   setInterval(function ajaxCall() {
+    treeRandomUpdate = Math.random();
     $.ajax({
       type: 'GET',
       url: '/input.json',
@@ -11,7 +13,7 @@ function startAjaxCallsForSensorInputs(){
         console.log("Temperature: " + data.temperature);
         console.log("Sound: " + data.sound);
         console.log("Volume: " + data.volume);
-        if ( data.sound === true ) {
+        if ( data.sound === true || treeRandomUpdate < 0.05 ) {
           updateTree = true;
         } else {
           updateTree = false;

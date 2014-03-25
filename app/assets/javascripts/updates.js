@@ -73,25 +73,25 @@ function updateLight(light, updateTree) {
   drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning);
 
   // light input and history visualization
-  c.fillStyle = skyColor;
-  c.fillRect(lightWidth - 90, circleHeight - 90, 180, 180);
+  // c.fillStyle = skyColor;
+  // c.fillRect(lightWidth - 90, circleHeight - 90, 180, 180);
 
-  var circleRed = map(light, 200, 1000, 0, 48);
-  var circleGreen = map(light, 200, 1000, 8, 133);
-  var circleBlue = map(light, 200, 1000, 97, 227);
+  // var circleRed = map(light, 200, 1000, 0, 48);
+  // var circleGreen = map(light, 200, 1000, 8, 133);
+  // var circleBlue = map(light, 200, 1000, 97, 227);
 
-  c.fillStyle = 'rgb(' + circleRed + ',' + circleGreen + ',' + circleBlue +')';
-  c.beginPath();
-  c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
-  c.fill();
+  // c.fillStyle = 'rgb(' + circleRed + ',' + circleGreen + ',' + circleBlue +')';
+  // c.beginPath();
+  // c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
+  // c.fill();
 
-  c.fillStyle = 'CC0000';
-  var widthOffset = 0;
-  _.each(getBufferHistory(lightHistory), function(value){
-    var newValue = map(value, 200, 1000, 0, 90);
-    c.fillRect(lightWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
-    widthOffset = widthOffset + 6;
-  })
+  // c.fillStyle = 'CC0000';
+  // var widthOffset = 0;
+  // _.each(getBufferHistory(lightHistory), function(value){
+  //   var newValue = map(value, 200, 1000, 0, 90);
+  //   c.fillRect(lightWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
+  //   widthOffset = widthOffset + 6;
+  // })
 };
 
 function updateTemperature(temp) {

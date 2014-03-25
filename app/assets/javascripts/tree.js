@@ -3,8 +3,8 @@
 
 var i;
 var j;
-var randomInts = [];
-var randomInt;
+var randomNums = [];
+var randomNum;
 
 function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning) {
 
@@ -39,23 +39,23 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         c.translate(0,-height/7);
 
         if ( updateTree === true ) {
-          randomInts = [];
+          randomNums = [];
           for (i = 0; i < 300; i ++) {
-            randomInts.push(-(Math.random() * 0.1) + 0.1)
+            randomNums.push(-(Math.random() * 0.01) + 0.01) // 0.1
           }
         } else {
           j = 0;
         }
 
-        if ( randomInts[j] === randomInts[299] ) {
+        if ( randomNums[j] === randomNums[299] ) {
           j = 0;
         } else {
           j++;
         }
 
-        randomInt = randomInts[j];
+        randomNum = randomNums[j];
 
-        c.rotate(randomInt);
+        c.rotate(randomNum);
 
         switch(this.randomness)
         {
