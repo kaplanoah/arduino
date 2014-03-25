@@ -1,7 +1,7 @@
 var treeRandomUpdate = Math.random();
 var updateTree;
 var sway;
-var drawLeaves = true;
+var drawLeaves = 100;
 
 function startAjaxCallsForSensorInputs(){
 
@@ -27,12 +27,8 @@ function startAjaxCallsForSensorInputs(){
           updateTree = false;
         }
 
-        // do not draw leaves at low temperature
-        if ( data.temperature < 133 ) {
-          drawLeaves = false;
-        } else {
-          drawLeaves = true;
-        }
+        // set percentage of leaves to draw
+        drawLeaves = map(data.temperature, 132, 141, 0, 100);
 
         updateLight(data.light, updateTree, sway, drawLeaves);
         // updateTemperature(data.temperature);

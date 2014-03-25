@@ -93,7 +93,8 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         }
       } else {
         // draw leaves
-        if ( drawLeaves ) {
+        leafPercentage = Math.floor((Math.random()*100)+0)
+        if ( leafPercentage < drawLeaves ) {
           randomLeafColor = Math.floor((Math.random()*15)+1)
           c.fillStyle = this.leavesColor = 'rgb(' + ( leafColor[0] - randomLeafColor ) + ',' + ( leafColor[1] - randomLeafColor ) + ',' + ( leafColor[2] - randomLeafColor ) + ')';
           c.fillRect(0, 0, this.leafSize, this.leafLength);
