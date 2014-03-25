@@ -2,11 +2,14 @@
 // http://codediesel.com
 
 var i;
-var j;
+var j = 0;
 var randomNums = [];
+for (i = 0; i < 100; i ++) {
+  randomNums.push(-(Math.random() * 0.01) + 0.01)
+}
 var randomNum;
 
-function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning) {
+function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway) {
 
   drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, drawLightning);
 
@@ -20,6 +23,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
     randomness:    0.9,
 
     draw : function() {
+      j = 0;
       c.translate(width / 2 - 300, height); // tree position
       c.lineWidth = this.branchWidth;
       this.leavesColor = leafColor;
@@ -41,11 +45,11 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         if ( updateTree === true ) {
           randomNums = [];
           for (i = 0; i < 300; i ++) {
-            randomNums.push(-(Math.random() * 0.01) + 0.01) // 0.1
+            randomNums.push(-(Math.random() * sway) + sway) // 0.01 - 0.1
           }
-        } else {
-          j = 0;
         }
+
+        // start from beginning ( j = 0 ) at new tree
 
         if ( randomNums[j] === randomNums[299] ) {
           j = 0;
@@ -54,7 +58,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         }
 
         randomNum = randomNums[j];
-
+        console.log(randomNum);
         c.rotate(randomNum);
 
         switch(this.randomness)

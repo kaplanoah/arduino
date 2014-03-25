@@ -12,7 +12,7 @@ var flashedLightning = false;
 var lightBeforeFlash;
 var counter = 0;
 
-function updateLight(light, updateTree) {
+function updateLight(light, updateTree, sway) {
 
   updateBuffer(lightHistory, light);
 
@@ -70,7 +70,7 @@ function updateLight(light, updateTree) {
     assignColorValues(light);
   }
 
-  drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning);
+  drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway);
 
   // light input and history visualization
   // c.fillStyle = skyColor;

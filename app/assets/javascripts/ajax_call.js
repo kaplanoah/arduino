@@ -1,5 +1,6 @@
 var treeRandomUpdate = Math.random();
 var updateTree;
+var sway;
 
 function startAjaxCallsForSensorInputs(){
 
@@ -13,12 +14,16 @@ function startAjaxCallsForSensorInputs(){
         console.log("Temperature: " + data.temperature);
         console.log("Sound: " + data.sound);
         console.log("Volume: " + data.volume);
-        if ( data.sound === true || treeRandomUpdate < 0.05 ) {
+        if ( data.sound === true ) {
           updateTree = true;
+          sway = 0.07;
+        } else if ( treeRandomUpdate < 0.07 ) {
+          updateTree = true;
+          sway = 0.01;
         } else {
           updateTree = false;
         }
-        updateLight(data.light, updateTree);
+        updateLight(data.light, updateTree, sway);
         updateTemperature(data.temperature);
         updateSound(data.sound);
         updateVolume(data.volume);
