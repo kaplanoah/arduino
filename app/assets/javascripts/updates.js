@@ -10,7 +10,7 @@ var difference;
 var drawLightning;
 var flashedLightning = false;
 var lightBeforeFlash;
-var counter = 0;
+var flashCounter = 0;
 
 function updateLight(light, updateTree, sway, drawLeaves) {
 
@@ -21,7 +21,7 @@ function updateLight(light, updateTree, sway, drawLeaves) {
   if ( difference > 150 ) {
     drawLightning = true;
     flashedLightning = true;
-    counter = 5;
+    flashCounter = 5;
     lightBeforeFlash = getBufferPastValue(lightHistory, 1);
   } else {
     drawLightning = false;
@@ -54,17 +54,17 @@ function updateLight(light, updateTree, sway, drawLeaves) {
     trunkBlue = map(lightValue, 200, 1000, 16, 46);
     trunkColor = 'rgb(' + trunkRed + ',' + trunkGreen + ',' + trunkBlue + ')';
 
-    leafRed = map(lightValue, 200, 1000, 12, 62);
+    leafRed = map(lightValue, 200, 1000, 12, 52);
     leafGreen = map(lightValue, 200, 1000, 59, 184);
     leafBlue = map(lightValue, 200, 1000, 13, 64);
     leafColor = [leafRed, leafGreen, leafBlue];
 
-    if ( flashedLightning ) counter --;
-    if ( counter === 0 ) flashedLightning = false;
+    if ( flashedLightning ) flashCounter --;
+    if ( flashCounter === 0 ) flashedLightning = false;
 
   }
 
-  if ( counter > 0 ) {
+  if ( flashCounter > 0 ) {
     assignColorValues(lightBeforeFlash);
   } else {
     assignColorValues(light);
@@ -73,25 +73,25 @@ function updateLight(light, updateTree, sway, drawLeaves) {
   drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway, drawLeaves);
 
   // light input and history visualization
-  // c.fillStyle = skyColor;
-  // c.fillRect(lightWidth - 90, circleHeight - 90, 180, 180);
+  c.fillStyle = skyColor;
+  c.fillRect(lightWidth - 90, circleHeight - 90, 180, 180);
 
-  // var circleRed = map(light, 200, 1000, 0, 48);
-  // var circleGreen = map(light, 200, 1000, 8, 133);
-  // var circleBlue = map(light, 200, 1000, 97, 227);
+  var circleRed = map(light, 200, 1000, 0, 48);
+  var circleGreen = map(light, 200, 1000, 8, 133);
+  var circleBlue = map(light, 200, 1000, 97, 227);
 
-  // c.fillStyle = 'rgb(' + circleRed + ',' + circleGreen + ',' + circleBlue +')';
-  // c.beginPath();
-  // c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
-  // c.fill();
+  c.fillStyle = 'rgb(' + circleRed + ',' + circleGreen + ',' + circleBlue +')';
+  c.beginPath();
+  c.arc(lightWidth, circleHeight, 90, 0, Math.PI * 2, true);
+  c.fill();
 
-  // c.fillStyle = 'CC0000';
-  // var widthOffset = 0;
-  // _.each(getBufferHistory(lightHistory), function(value){
-  //   var newValue = map(value, 200, 1000, 0, 90);
-  //   c.fillRect(lightWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
-  //   widthOffset = widthOffset + 6;
-  // })
+  c.fillStyle = 'CC0000';
+  var widthOffset = 0;
+  _.each(getBufferHistory(lightHistory), function(value){
+    var newValue = map(value, 200, 1000, 0, 90);
+    c.fillRect(lightWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
+    widthOffset = widthOffset + 6;
+  })
 };
 
 function updateTemperature(temp) {

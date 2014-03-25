@@ -1,7 +1,10 @@
 var treeRandomUpdate = Math.random();
 var updateTree;
-var sway;
+var sway = 0.01;
 var drawLeaves = 100;
+
+// counter to reduce frequency of leaf updates
+var leavesCounter = 0;
 
 function startAjaxCallsForSensorInputs(){
 
@@ -28,12 +31,21 @@ function startAjaxCallsForSensorInputs(){
         }
 
         // set percentage of leaves to draw
-        drawLeaves = map(data.temperature, 132, 141, 0, 100);
+        if ( leavesCounter === 0 ) {
+          drawLeaves = map(data.temperature, 133, 141, 0, 100);
+          leavesCounter = 5;
+          if ( drawLeaves < 1 ) leavesCounter = 40;
+        } else {
+          leavesCounter --;
+        }
+
+        // overwrite sound input to always update tree if no leaves
+        if ( drawLeaves === 0 ) updateTree = true;
 
         updateLight(data.light, updateTree, sway, drawLeaves);
-        // updateTemperature(data.temperature);
-        // updateSound(data.sound);
-        // updateVolume(data.volume);
+        updateTemperature(data.temperature);
+        updateSound(data.sound);
+        updateVolume(data.volume);
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) { 
         console.log("Status: " + textStatus);
