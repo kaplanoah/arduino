@@ -57,7 +57,7 @@ function updateLight(light, updateTree, sway) {
     leafRed = map(lightValue, 200, 1000, 12, 62);
     leafGreen = map(lightValue, 200, 1000, 59, 184);
     leafBlue = map(lightValue, 200, 1000, 13, 64);
-    leafColor = 'rgb(' + leafRed + ',' + leafGreen + ',' + leafBlue + ')';
+    leafColor = [leafRed, leafGreen, leafBlue];
 
     if ( flashedLightning ) counter --;
     if ( counter === 0 ) flashedLightning = false;

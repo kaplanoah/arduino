@@ -26,7 +26,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
       j = 0;
       c.translate(width / 2 - 300, height); // tree position
       c.lineWidth = this.branchWidth;
-      this.leavesColor = leafColor;
+
       c.lineJoin = 'round';
       c.lineCap = 'round';
       c.save();
@@ -93,7 +93,8 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         }
       } else {
         // draw leaves
-        c.fillStyle = this.leavesColor;
+        randomLeafColor = Math.floor((Math.random()*15)+1)
+        c.fillStyle = this.leavesColor = 'rgb(' + ( leafColor[0] - randomLeafColor ) + ',' + ( leafColor[1] - randomLeafColor ) + ',' + ( leafColor[2] - randomLeafColor ) + ')';
         c.fillRect(0, 0, this.leafSize, this.leafLength);
         c.stroke();
       }
