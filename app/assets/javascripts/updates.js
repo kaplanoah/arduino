@@ -5,6 +5,7 @@ var mountain3Red; var mountain3Green; var mountain3Blue;
     var trunkRed;     var trunkGreen;     var trunkBlue;
      var leafRed;      var leafGreen;      var leafBlue;
 
+// declare or initialize light variables
 var difference;
 var drawLightning;
 var flashedLightning = false;
@@ -17,8 +18,6 @@ function updateLight(light, updateTree) {
 
   if ( getBufferPastValue(lightHistory, 1) ) difference = light - getBufferPastValue(lightHistory, 1);
 
-  console.log("DIFFERENCE: " + difference);
-
   if ( difference > 150 ) {
     drawLightning = true;
     flashedLightning = true;
@@ -28,44 +27,48 @@ function updateLight(light, updateTree) {
     drawLightning = false;
   }
 
-  if ( !flashedLightning ) {
-    skyRed = map(light, 200, 1000, 0, 172);
-    skyGreen = map(light, 200, 1000, 8, 218);
-    skyBlue = map(light, 200, 1000, 64, 255);
+  function assignColorValues(lightValue) {
+
+    skyRed = map(lightValue, 200, 1000, 0, 172);
+    skyGreen = map(lightValue, 200, 1000, 8, 218);
+    skyBlue = map(lightValue, 200, 1000, 64, 255);
     skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
-  } else {
-    skyRed = map(lightBeforeFlash, 200, 1000, 0, 172);
-    skyGreen = map(lightBeforeFlash, 200, 1000, 8, 218);
-    skyBlue = map(lightBeforeFlash, 200, 1000, 64, 255);
-    skyColor = 'rgb(' + skyRed + ',' + skyGreen + ',' + skyBlue + ')';
-    counter --;
+
+    mountain1Red = map(lightValue, 200, 1000, 81, 221);
+    mountain1Green = map(lightValue, 200, 1000, 55, 209);
+    mountain1Blue = map(lightValue, 200, 1000, 94, 227);
+    mountainColor1 = 'rgb(' + mountain1Red + ',' + mountain1Green + ',' + mountain1Blue + ')';
+
+    mountain2Red = map(lightValue, 200, 1000, 71, 201);
+    mountain2Green = map(lightValue, 200, 1000, 38, 190);
+    mountain2Blue = map(lightValue, 200, 1000, 87, 207);
+    mountainColor2 = 'rgb(' + mountain2Red + ',' + mountain2Green + ',' + mountain2Blue + ')';
+
+    mountain3Red = map(lightValue, 200, 1000, 45, 192);
+    mountain3Green = map(lightValue, 200, 1000, 8, 173);
+    mountain3Blue = map(lightValue, 200, 1000, 64, 201);
+    mountainColor3 = 'rgb(' + mountain3Red + ',' + mountain3Green + ',' + mountain3Blue + ')';
+
+    trunkRed = map(lightValue, 200, 1000, 54, 112);
+    trunkGreen = map(lightValue, 200, 1000, 29, 61);
+    trunkBlue = map(lightValue, 200, 1000, 16, 46);
+    trunkColor = 'rgb(' + trunkRed + ',' + trunkGreen + ',' + trunkBlue + ')';
+
+    leafRed = map(lightValue, 200, 1000, 12, 62);
+    leafGreen = map(lightValue, 200, 1000, 59, 184);
+    leafBlue = map(lightValue, 200, 1000, 13, 64);
+    leafColor = 'rgb(' + leafRed + ',' + leafGreen + ',' + leafBlue + ')';
+
+    if ( flashedLightning ) counter --;
     if ( counter === 0 ) flashedLightning = false;
+
   }
 
-  mountain1Red = map(light, 200, 1000, 81, 221);
-  mountain1Green = map(light, 200, 1000, 55, 209);
-  mountain1Blue = map(light, 200, 1000, 94, 227);
-  mountainColor1 = 'rgb(' + mountain1Red + ',' + mountain1Green + ',' + mountain1Blue + ')';
-
-  mountain2Red = map(light, 200, 1000, 71, 201);
-  mountain2Green = map(light, 200, 1000, 38, 190);
-  mountain2Blue = map(light, 200, 1000, 87, 207);
-  mountainColor2 = 'rgb(' + mountain2Red + ',' + mountain2Green + ',' + mountain2Blue + ')';
-
-  mountain3Red = map(light, 200, 1000, 45, 192);
-  mountain3Green = map(light, 200, 1000, 8, 173);
-  mountain3Blue = map(light, 200, 1000, 64, 201);
-  mountainColor3 = 'rgb(' + mountain3Red + ',' + mountain3Green + ',' + mountain3Blue + ')';
-
-  trunkRed = map(light, 200, 1000, 54, 112);
-  trunkGreen = map(light, 200, 1000, 29, 61);
-  trunkBlue = map(light, 200, 1000, 16, 46);
-  trunkColor = 'rgb(' + trunkRed + ',' + trunkGreen + ',' + trunkBlue + ')';
-
-  leafRed = map(light, 200, 1000, 12, 62);
-  leafGreen = map(light, 200, 1000, 59, 184);
-  leafBlue = map(light, 200, 1000, 13, 64);
-  leafColor = 'rgb(' + leafRed + ',' + leafGreen + ',' + leafBlue + ')';
+  if ( counter > 0 ) {
+    assignColorValues(lightBeforeFlash);
+  } else {
+    assignColorValues(light);
+  }
 
   drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning);
 
