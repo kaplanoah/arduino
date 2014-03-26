@@ -12,13 +12,13 @@ var flashedLightning = false;
 var lightBeforeFlash;
 var flashCounter = 0;
 
-function updateLight(light, updateTree, sway, drawLeaves) {
+function updateCanvas(light, updateTree, sway, drawLeaves) {
 
   updateBuffer(lightHistory, light);
 
   if ( getBufferPastValue(lightHistory, 1) ) difference = light - getBufferPastValue(lightHistory, 1);
 
-  if ( difference > 150 ) {
+  if ( ( difference > 30 ) && ( light > 800 ) ) {
     drawLightning = true;
     flashedLightning = true;
     flashCounter = 5;
@@ -72,7 +72,11 @@ function updateLight(light, updateTree, sway, drawLeaves) {
 
   drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway, drawLeaves);
 
-  // light input and history visualization
+};
+
+function updateLight(light) {
+  // light buffer updated in updateCanvas above
+
   c.fillStyle = skyColor;
   c.fillRect(lightWidth - 90, circleHeight - 90, 180, 180);
 
@@ -92,12 +96,12 @@ function updateLight(light, updateTree, sway, drawLeaves) {
     c.fillRect(lightWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
     widthOffset = widthOffset + 6;
   })
+
 };
 
 function updateTemperature(temp) {
   updateBuffer(tempHistory, temp);
 
-  // temperature input and history visualization
   c.fillStyle = skyColor;
   c.fillRect(temperatureWidth - 90, circleHeight - 90, 180, 180);
 
@@ -121,7 +125,6 @@ function updateTemperature(temp) {
 function updateVolume(volume) {
   updateBuffer(volumeHistory, volume);
 
-  // volume input and history visualization
   if ( volume < 400 ) {
     volume = 800 - volume;
   }
@@ -146,7 +149,6 @@ function updateVolume(volume) {
 function updateSound(sound) {
   updateBuffer(soundHistory, sound);
  
-  // sound input and history visualization
   c.fillStyle = skyColor;
   c.fillRect(soundWidth - 90, circleHeight - 90, 180, 180);
 

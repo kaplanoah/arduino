@@ -18,7 +18,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
 
     branchWidth:   30,
     leafSpread:    0.5,
-    leafSize:      550,
+    leafSize:      590,
     leafLength:    200,
     randomness:    0.9,
 

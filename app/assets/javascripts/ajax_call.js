@@ -42,10 +42,13 @@ function startAjaxCallsForSensorInputs(){
         // overwrite sound input to always update tree if no leaves
         if ( drawLeaves === 0 ) updateTree = true;
 
-        updateLight(data.light, updateTree, sway, drawLeaves);
-        updateTemperature(data.temperature);
-        updateSound(data.sound);
-        updateVolume(data.volume);
+        updateCanvas(data.light, updateTree, sway, drawLeaves);
+
+        // display input visualizations
+        // updateLight(data.light);
+        // updateTemperature(data.temperature);
+        // updateSound(data.sound);
+        // updateVolume(data.volume);
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) { 
         console.log("Status: " + textStatus);
