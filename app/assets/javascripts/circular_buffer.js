@@ -37,8 +37,8 @@ function getBufferPastValue(buffer, index) { // 0 is last added value
 }
 
 function initializeCircularBuffers(length) {
-  var bufferNames = ["lightHistory", "tempHistory", "volumeHistory", "soundHistory"]
+  var bufferNames = ["lightHistory", "tempHistory", "volumeHistory", "soundHistory"];
   for (var i = 0; i < bufferNames.length; i ++) {
-    createCircularBuffer(bufferNames[i], length)
+    createCircularBuffer(bufferNames[i], length);
   }
 }

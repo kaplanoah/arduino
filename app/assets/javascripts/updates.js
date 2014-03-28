@@ -91,9 +91,9 @@ function updateCanvas(light, updateTree, sway, drawLeaves) {
     } else {
       fireFlyCounter = 6;
     }
-  };
+  }
 
-};
+}
 
 function updateLight(light) {
   // light buffer updated in updateCanvas above
@@ -116,9 +116,9 @@ function updateLight(light) {
     var newValue = map(value, 200, 1000, 0, 90);
     c.fillRect(lightWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
     widthOffset = widthOffset + 6;
-  })
+  });
 
-};
+}
 
 function updateTemperature(temp) {
   updateBuffer(tempHistory, temp);
@@ -140,8 +140,8 @@ function updateTemperature(temp) {
     var newValue = map(value, 120, 190, 0, 90);
     c.fillRect(temperatureWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
     widthOffset = widthOffset + 6;
-  })
-};
+  });
+}
 
 function updateVolume(volume) {
   updateBuffer(volumeHistory, volume);
@@ -164,8 +164,8 @@ function updateVolume(volume) {
     var newValue = map(value, 400, 1200, 0, 90);
     c.fillRect(soundWidth - 90 + widthOffset, circleHeight - newValue + 90, 5, newValue);
     widthOffset = widthOffset + 6;
-  })
-};
+  });
+}
 
 function updateSound(sound) {
   updateBuffer(soundHistory, sound);
@@ -183,4 +183,4 @@ function updateSound(sound) {
   c.beginPath();
   c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, false);
   c.stroke();
-};
+}

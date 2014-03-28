@@ -76,6 +76,6 @@ function drawSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainC
     c.save();
     drawMountain(ruggedValues[i], mountainColors[i], edgeHeights[i], smoothings[i], drawLightning);
     c.restore();
-  };
-
+  }
+  
 }

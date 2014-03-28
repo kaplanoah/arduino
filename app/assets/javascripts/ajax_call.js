@@ -54,7 +54,7 @@ function startAjaxCallsForSensorInputs(){
         console.log("Status: " + textStatus);
         console.log("Error: " + errorThrown); 
       }
-    })
+    });
   }, 100);
 
 }

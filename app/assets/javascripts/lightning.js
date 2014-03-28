@@ -54,8 +54,8 @@ var lightning = function(config){
       drawLightning(x1, y1, midx, midy, displace / 2);
       drawLightning(x2, y2, midx, midy, displace / 2);
     }
-  };
-}
+  }
+};
 
 function flashLightning(){
   var lt = new lightning();

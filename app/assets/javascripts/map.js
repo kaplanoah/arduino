@@ -8,4 +8,4 @@ function map(value, lower1, upper1, lower2, upper2) {
     var newValue = percentage * ( upper2 - lower2 ) + lower2;
     return Math.round(newValue);
   }
-};
+}

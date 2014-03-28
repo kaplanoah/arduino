@@ -5,7 +5,7 @@ var i;
 var j = 0;
 var randomNums = [];
 for (i = 0; i < 100; i ++) {
-  randomNums.push(-(Math.random() * 0.01) + 0.01)
+  randomNums.push(-(Math.random() * 0.01) + 0.01);
 }
 var randomNum;
 
@@ -45,7 +45,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         if ( updateTree === true ) {
           randomNums = [];
           for (i = 0; i < 300; i ++) {
-            randomNums.push(-(Math.random() * sway) + sway) // 0.01 - 0.1
+            randomNums.push(-(Math.random() * sway) + sway); // 0.01 - 0.1
           }
         }
 
@@ -95,7 +95,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
         // draw leaves
         leafPercentage = Math.floor((Math.random()*100)+0);
         if ( leafPercentage < drawLeaves ) {
-          randomLeafColor = Math.floor((Math.random()*15)+1)
+          randomLeafColor = Math.floor((Math.random()*15)+1);
           c.fillStyle = this.leavesColor = 'rgb(' + ( leafColor[0] - randomLeafColor ) + ',' + ( leafColor[1] - randomLeafColor ) + ',' + ( leafColor[2] - randomLeafColor ) + ')';
           c.fillRect(0, 0, this.leafSize, this.leafLength);
           c.stroke();
