@@ -5,12 +5,12 @@ var mountain3Red; var mountain3Green; var mountain3Blue;
     var trunkRed;     var trunkGreen;     var trunkBlue;
      var leafRed;      var leafGreen;      var leafBlue;
 
-// declare or initialize light variables
 var difference;
 var drawLightning;
 var flashedLightning = false;
 var lightBeforeFlash;
 var flashCounter = 0;
+var fireFlyCounter = 6;
 
 function updateCanvas(light, updateTree, sway, drawLeaves) {
 
@@ -72,9 +72,19 @@ function updateCanvas(light, updateTree, sway, drawLeaves) {
 
   drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway, drawLeaves);
 
-  // if ( light is low enough and temperature is high enough ) {
-    drawFireflies();
-  // };
+  if ( light < 520 && drawLeaves > 50 ) {
+    if ( fireFlyCounter <= 6 && fireFlyCounter > 3 ) {
+      fireFlyCounter --;
+    } else if ( fireFlyCounter === 3 ) {
+      drawFireflies(true);
+      fireFlyCounter --;
+    } else if ( fireFlyCounter < 3 && fireFlyCounter > 0 ) {
+      drawFireflies(false);
+      fireFlyCounter --;
+    } else {
+      fireFlyCounter = 6;
+    }
+  };
 
 };
 
@@ -164,6 +174,6 @@ function updateSound(sound) {
 
   c.lineWidth = 9;
   c.beginPath();
-  c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, true);
+  c.arc(soundWidth, circleHeight, 90, 0, Math.PI * 2, false);
   c.stroke();
 };
