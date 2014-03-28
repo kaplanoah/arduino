@@ -27,10 +27,6 @@ function updateCanvas(light, updateTree, sway, drawLeaves) {
     drawLightning = false;
   }
 
-  // if ( light is low enough and temperature is high enough ) {
-    drawFireflies();
-  // };
-
   function assignColorValues(lightValue) {
 
     skyRed = map(lightValue, 200, 1000, 0, 172);
@@ -75,6 +71,10 @@ function updateCanvas(light, updateTree, sway, drawLeaves) {
   }
 
   drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway, drawLeaves);
+
+  // if ( light is low enough and temperature is high enough ) {
+    drawFireflies();
+  // };
 
 };
 
