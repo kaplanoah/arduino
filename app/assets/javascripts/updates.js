@@ -27,6 +27,10 @@ function updateCanvas(light, updateTree, sway, drawLeaves) {
     drawLightning = false;
   }
 
+  // if ( light is low enough and temperature is high enough ) {
+    drawFireflies();
+  // };
+
   function assignColorValues(lightValue) {
 
     skyRed = map(lightValue, 200, 1000, 0, 172);

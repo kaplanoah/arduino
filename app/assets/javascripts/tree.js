@@ -16,7 +16,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
   c.strokeStyle = trunkColor;
   var tree = {
 
-    branchWidth:   30,
+    branchWidth:   33,
     leafSpread:    0.5,
     leafSize:      590,
     leafLength:    200,
@@ -24,7 +24,7 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
 
     draw : function() {
       j = 0;
-      c.translate(width / 2 - 300, height); // tree position
+      c.translate(width / 2 - 290, height); // tree position
       c.lineWidth = this.branchWidth;
 
       c.lineJoin = 'round';
@@ -38,9 +38,9 @@ function drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mount
       if (depth < 12) {
         c.beginPath();
         c.moveTo(0,0);
-        c.lineTo(0,-(height)/7);
+        c.lineTo(0,-(height)/7.1);
         c.stroke();
-        c.translate(0,-height/7);
+        c.translate(0,-height/7.1);
 
         if ( updateTree === true ) {
           randomNums = [];
