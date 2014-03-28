@@ -11,6 +11,7 @@ var flashedLightning = false;
 var lightBeforeFlash;
 var flashCounter = 0;
 var fireFlyCounter = 6;
+var fireFlyClock = 0;
 
 function updateCanvas(light, updateTree, sway, drawLeaves) {
 
@@ -72,7 +73,13 @@ function updateCanvas(light, updateTree, sway, drawLeaves) {
 
   drawTreeSkyAndMountains(skyColor, mountainColor1, mountainColor2, mountainColor3, trunkColor, leafColor, updateTree, drawLightning, sway, drawLeaves);
 
-  if ( light < 520 && drawLeaves > 50 ) {
+  if ( light < 520 && drawLeaves > 50 && sway != 0.7 ) {
+    fireFlyClock ++;
+  } else {
+    fireFlyClock = 0;
+  }
+
+  if ( light < 520 && drawLeaves > 50 && fireFlyClock > 360 ) {
     if ( fireFlyCounter <= 6 && fireFlyCounter > 3 ) {
       fireFlyCounter --;
     } else if ( fireFlyCounter === 3 ) {
