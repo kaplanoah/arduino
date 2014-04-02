@@ -19,7 +19,7 @@ function updateCanvas(light, updateTree, sway, drawLeaves) {
 
   if ( getBufferPastValue(lightHistory, 1) ) difference = light - getBufferPastValue(lightHistory, 1);
 
-  if ( ( difference > 30 ) && ( light > 800 ) ) {
+  if ( ( difference > 30 ) && ( light > 900 ) ) {
     drawLightning = true;
     flashedLightning = true;
     flashCounter = 5;
