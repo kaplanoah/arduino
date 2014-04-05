@@ -20,7 +20,7 @@ The artistic goal is to explore the idea of manipulating a technological environ
 - app > assets > javascripts > [ajax_call.js](../../blob/master/app/assets/javascripts/ajax_call.js)
 - app > assets > javascripts > [updates.js](../../blob/master/app/assets/javascripts/updates.js)
 - app > controllers > [site_controller.rb](../../blob/master/app/controllers/site_controller.rb)
-- app > views > site > [display.html.erb](../../blob/master/app/views/display.html.erb)
+- app > views > site > [display.html.erb](../../blob/master/app/views/site/display.html.erb)
 
 ### To launch app
 
