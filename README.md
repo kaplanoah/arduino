@@ -1,4 +1,4 @@
-# Arduino Project
+# Interactive animation
 
 An interactive art project where users interact with sensors on a microcontroller to manipulate an animation (HTML5 canvas) on a projector.
 
@@ -8,12 +8,19 @@ The artistic goal is to explore the idea of manipulating a technological environ
 
 ### Technologies
 
-* Arduino UNO microcontroller
-* Firmata
-* Ruby on Rails
-* JavaScript
-* AJAX
-* HTML5 canvas
+- Arduino UNO microcontroller
+- Firmata
+- Ruby on Rails
+- JavaScript
+- AJAX
+- HTML5 canvas
+
+### Key files
+
+- app > assets > javascripts > [ajax_call.js](../../blob/master/app/assets/javascripts/ajax_call.js)
+- app > assets > javascripts > [updates.js](../../blob/master/app/assets/javascripts/updates.js)
+- app > controllers > [site_controller.rb](../../blob/master/app/controllers/site_controller.rb)
+- app > views > site > [display.html.erb](../../blob/master/app/views/display.html.erb)
 
 ### To launch app
 
